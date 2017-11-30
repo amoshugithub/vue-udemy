@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vue udemy</title>
+	<script src="https://unpkg.com/vue"></script>
+	<link rel="stylesheet" type="text/css" href="./vue.css">
+</head>
+<body>
+	<div id="app">
+		<counter></counter>
+	</div>
+</body>
+	<script>
+		var counterv = Vue.component('counter',{
+			template: `
+				<div>
+					<div>Count: {{this.count}}</div>
+					<button class="vue-btn" v-on:click="increment">Increment by 1</button>
+				</div>
+			`,
+			// props: {
+			// 	addNum: {
+			// 		type: Number,
+			// 		default: 1
+			// 	}
+			// },
+			data() {
+				return {
+					count: 0
+				}
+			},
+			methods: {
+				increment() {
+					this.count ++
+				}
+			}
+		})
+
+		var appv = new Vue({
+			el: '#app',
+			data: {
+
+			}
+		});
+
+	</script>
+</html>
