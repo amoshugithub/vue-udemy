@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="app">
-		<counter></counter>
+		<counter v-bind:add-num="10"></counter>
 	</div>
 </body>
 	<script>
@@ -16,15 +16,15 @@
 			template: `
 				<div>
 					<div>Count: {{this.count}}</div>
-					<button class="vue-btn" v-on:click="increment">Increment by 1</button>
+					<button class="vue-btn" v-on:click="increment">Increment by {{this.addNum}}</button>
 				</div>
 			`,
-			// props: {
-			// 	addNum: {
-			// 		type: Number,
-			// 		default: 1
-			// 	}
-			// },
+			props: {
+				addNum: {
+					type: Number,
+					default: 1
+				}
+			},
 			data() {
 				return {
 					count: 0
@@ -32,7 +32,7 @@
 			},
 			methods: {
 				increment() {
-					this.count ++
+					this.count += this.addNum
 				}
 			}
 		})
