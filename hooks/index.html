@@ -8,35 +8,26 @@
 </head>
 <body>
 	<div id="app">
-		<br>
-		<br><br><br><br><br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<div>Hello</div>
+		<div>Hello world</div>
+		<button class="vue-btn" @click="increment">Increment</button>
+		<div>count: {{count}}</div>
 	</div>
 </body>
 	<script>
 		var app = new Vue({
 			el:'#app',
 			data: {
-
+				count: 0
 			},
 			methods: {
-				alertTime() {
-					alert(`This time is ${Date.now().toLocaleString()}`)
+				increment() {
+					this.count++
 				}
 			},
-			mounted(){
-				this.alertTime()
-				console.log("mounted")
-			},
-			created() {
-				this.alertTime()
-				console.log("created")
+			updated() {
+				console.log('this.count :' , this.count)
 			}
+			
 
 		})
 	</script>
