@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../nodeMaster.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<title>Notemaster</title>
+</head>
+<body>
+	<div id="app">
+		<h3>{{title}}</h3>
+		<div class="form">
+			<div class="form-group">
+				<div class="form-group">
+					<label>Note title</label>
+					<input type="text" class="form-control" v-model="note.title">
+				</div>
+				<div class="form-group">
+					<label>Note text</label>
+					<input type="text" class="form-control" v-model="note.text">
+				</div>
+				<button class="btn btn-primary" v-on:click="addNote">sumbit</button>
+			</div>
+		</div>
+	</div>
+
+<script>
+	var app = new Vue({
+		el: '#app',
+		data : {
+			title: 'Notemaster' ,
+			note: {
+				title: '',
+				text: ''
+			},
+			notes: [{
+				title: 'aabbcc',
+				text: 'ddeeff' ,
+				date: new Date(Date.now()).toLocaleString()
+			}]
+		},
+		methods: {
+			addNote(){
+				let {title,text} = this.note
+				this.notes.push({
+					title,
+					text,
+					date: new Date(Date.now()).toLocaleString()
+				})
+			}
+		}
+		
+	})		
+</script>
+</body>
+</html>
