@@ -19,7 +19,7 @@ export default {
 	data(){
 		return {
 			title: 'Generate your team',
-			initial_ids: ['2','5','8']
+			initial_ids: ['1','11','22','33']
 		}
 	},
 	components: {
