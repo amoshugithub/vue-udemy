@@ -25,12 +25,14 @@
 		</div>
 		<div class="col-sm-12">
 			<div class="col-sm-3 note" v-for="(note,index) in notes">
+			<!--v-for(item,index in items(array))-->
 				<div class="card">
 					<button class="close" v-on:click="deleteNote(index)">&times;</button>
 					<div class="card-block">
 						<h4 class="card-title warning">{{note.title}}</h4>
 						<h6 class="card-subtitle mb-2 text-muted">{{note.date}}</h6>
 						<p class="card-text">{{note.text}}</p>
+						<span>Rank: {{note.rank}} </span><button class="btn btn-info" @click="addRank(note)">Add rank</button>
 					</div>
 				</div>
 			</div>
@@ -44,28 +46,48 @@
 			title: 'Notemaster' ,
 			note: {
 				title: '',
-				text: ''
+				text: '',
+				rank: 1
 			},
 			notes: [
 				{
 				title: 'Today is wonderful day',
 				text: `It's good to eat hotpot!` ,
+				rank: 2,
+				date: new Date(Date.now()).toLocaleString()
+				},
+				{
+				title: 'What to eat in dinner',
+				text: `Absuloted pasta!!` ,
+				rank: 3,
 				date: new Date(Date.now()).toLocaleString()
 				}]
 		},
 		methods: {
 			addNote(){
-				let {title,text} = this.note
+				let {title,text,rank} = this.note
 				if(title || text != "") {
 					this.notes.push({
 						title,
 						text,
-						date: new Date(Date.now()).toLocaleString()
+						date: new Date(Date.now()).toLocaleString(),
+						rank,
 					})
 				}
 			},
 			deleteNote(index) {
+				console.log(index)
+				// console.log(this.$el)
 				this.notes.splice(index,1)
+			},
+			addRank(note){
+
+				console.log(note.rank)
+
+				if(note.rank != 5){
+					note.rank++
+				} else
+				    note.rank = 1
 			}
 		}
 		
